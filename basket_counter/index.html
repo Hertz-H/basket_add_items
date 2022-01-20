@@ -167,7 +167,11 @@
         line-height: 20px;
         text-align: center;
     }
-
+@media(max-width:992px){
+    .offers_cards_container{
+        flex-wrap: wrap;
+    }
+}
 
 </style>
 <body>
@@ -195,7 +199,7 @@
                         <img src="img/logo.png" alt="">
                     </div>
                     <div class="search">
-                        <input type="search" placeholder="البحث"><i class="fas fa-search"></i>
+                        <input type="search" placeholder="البحث" id="search_input"><i class="fas fa-search"></i>
                     </div>
                     <div class="shoping_cart">
                         <i class="fas fa-cart-arrow-down"></i> 
@@ -289,15 +293,15 @@
 </aside> 
     
        <div class="offers_cards_container">
-        <div class="card">
+        <div class="card" id="you">
             <div class="img_container">
                 <img src="img/i_1.jpg" alt="">
             </div>
-         <div class="card_info">
+         <div class="card_info ">
             <div class="card_heading">
                 <i class="fas fa-book-open "></i>
                 <span>  كتاب إلكتروني</span>
-                <div class="book_name">  كن أنت  <span>(كتاب إلكتروني) </span></div>
+                <div class=" book_name"> <span class=" book_name_span"> كن أنت </span> <span>(كتاب إلكتروني) </span></div>
             </div>
             <div class="price_heading">
                 <span class="price">17.99 </span><span class="currency">ر.س</span>
@@ -319,15 +323,15 @@
             </div>
          </div>
         </div>
-        <div class="card">
+        <div class="card" id="gud">
             <div class="img_container">
                 <img src="img/i_1.jpg" alt="">
             </div>
-         <div class="card_info">
+         <div class="card_info" >
             <div class="card_heading">
                 <i class="fas fa-book-open "></i>
                 <span>  كتاب إلكتروني</span>
-                <div class="book_name">  كن أنت  <span>(كتاب إلكتروني) </span></div>
+                <div class=" gud book_name"> <span class=" book_name_span">لاتك الله</span>    <span>(كتاب إلكتروني) </span></div>
             </div>
             <div class="price_heading">
                 <span class="price">17.99 </span><span class="currency">ر.س</span>
@@ -341,15 +345,15 @@
             </div>
          </div>
         </div> 
-         <div class="card">
+         <div class="card" id="women">
             <div class="img_container">
                 <img src="img/i_1.jpg" alt="">
             </div>
-         <div class="card_info">
-            <div class="card_heading">
+         <div class="card_info" >
+            <div class="card_heading" >
                 <i class="fas fa-book-open "></i>
                 <span>  كتاب إلكتروني</span>
-                <div class="book_name">  كن أنت  <span>(كتاب إلكتروني) </span></div>
+                <div class=" women book_name"> <span class=" book_name_span">النسوية</span>    <span>(كتاب إلكتروني) </span></div>
             </div>
             <div class="price_heading">
                 <span class="price">17.99 </span><span class="currency">ر.س</span>
@@ -378,7 +382,7 @@
             <div class="card_heading">
                 <i class="fas fa-book-open "></i>
                 <span>  كتاب إلكتروني</span>
-                <div class="book_name">  كن أنت  <span>(كتاب إلكتروني) </span></div>
+                <div class="book_name"> <span class="book_name_span"> كن أنت </span> <span>(كتاب إلكتروني) </span></div>
             </div>
             <div class="price_heading">
                 <span class="price">17.99 </span><span class="currency">ر.س</span>
@@ -410,7 +414,6 @@
         <i class="close_signin"> <img src="img/close_icon.svg" alt=""></i>
        <div class="sign_header">
            <h3>انشاء حساب</h3>
-          
        </div>
        <hr>
        
@@ -625,6 +628,22 @@
 </div>
 </footer>
 <script>
+    var search_input=document.getElementById("search_input");
+    var cards=document.querySelectorAll(".card");
+    var book=document.querySelectorAll(".book_name_span");
+    search_input.onkeyup=function(){
+        if(search_input.value!=""){
+     for(let i=0;i < book.length;i++)
+     if(book[i].innerHTML.toUpperCase().indexOf(search_input.value.toUpperCase())==-1){
+         console.log( book[i].innerHTML);
+        cards[i].style.display="none" ;
+    }
+    else{
+        cards[i].style.display="block";
+    }
+}
+}
+
 
     var basktet_items_added =document.querySelector(".basktet_items_added");
 
@@ -655,6 +674,24 @@
         
 
     }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //    var close_signin =document.querySelector(".close_signin");
 //     var overly=document.querySelector(".overly");
 //     var sign_upbtn=document.getElementById("sign_upbtn");
